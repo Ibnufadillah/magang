@@ -9,7 +9,7 @@
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Page Title - SB Admin</title>
+    <title>Portal Akademik | Login</title>
     <link href="{{ asset('template') }}/css/styles.css" rel="stylesheet" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
