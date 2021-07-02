@@ -28,11 +28,14 @@
                       <div class="col-lg-5">
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                           <div class="card-header">
-                            <h3 class="text-center font-weight-light my-1">
-                              <p>Login</p>
-                            </h3>
                             <h3 class="text-center font-weight-light">
                               <img src="https://www.ulm.ac.id/id/wp-content/uploads/2015/05/Logo-Unlam.png" width="150" height="150">  
+                            </h3>
+                            <h3 class="text-center">
+                              {{-- <div class="login-header" style="background-color: #f84c07; padding:; display:flex; align-items:center; justify-content:center;  color: white; font-weight=bold"> --}}
+                              <div class="btn-primary">
+                                Halaman Login
+                              </div>
                             </h3>
                           </div>
                           <div class="card-body">
