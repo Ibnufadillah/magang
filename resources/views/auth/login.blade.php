@@ -40,9 +40,7 @@
                             <form method="POST" action="{{ route('login') }}">
                               @csrf
                               <div class="form-group">
-                                <label
-                                  class="small mb-1"
-                                  for="inputEmailAddress"
+                                <label class="small mb-1" for="inputEmailAddress"
                                   >Email</label
                                 >
                                 <input
