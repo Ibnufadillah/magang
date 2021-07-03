@@ -1,0 +1,45 @@
+.bg-login{
+    background-color: #fff;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://ft.ulm.ac.id/id/wp-content/uploads/2020/08/FT-Aerial-2020_1800-770p.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.login-header{
+    padding: 12px 20px 0px 20px;
+}
+.tab-group {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0px 0;
+}
+
+.tab-group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.tab-group .active a {
+    /* background-color: rgba(0, 0, 0, 0.03); */
+    /* background: rgba(0, 0, 0, 0.185); */
+    color: #212529b0;
+    border-top: solid 1px rgba(0, 0, 0, 0.185);
+    /* border-bottom: solid 1px rgba(0, 0, 0, 0.185); */
+   
+}
+.tab-group li a {
+    font-family: 'Titillium Web', sans-serif;
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(#a0b3b0, 0.25);
+    color: #a0b3b0;
+    font-size: 20px;
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+}
+.tab-group li a h4 {
+    margin-bottom: 0;
+}
