@@ -44,18 +44,7 @@
                                   >Email</label
                                 >
                                 <input
-                                  class="
-                                    form-control
-                                    py-4
-                                    @error('email')
-                                    is-invalid
-                                    @enderror
-                                  "
-                                  id="inputEmailAddress"
-                                  type="email"
-                                  name="email"
-                                  placeholder="Enter email address"
-                                  value="{{ old('email') }}"
+                                  class="form-control py-4 @error('email') is-invalid @enderror " id="inputEmailAddress" type="email" name="email" placeholder="Enter email address" value="{{ old('email') }}"
                                 />
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
