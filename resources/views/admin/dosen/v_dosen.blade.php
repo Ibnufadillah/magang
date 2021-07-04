@@ -26,7 +26,7 @@
                     @foreach($dosen as $m)
                     <tr>
                         <td>
-                                    {{ $m->id}}
+                                    {{ $m->getDosenID()}}
                         </td>
                         <td>
                                     {{ $m->nama}}

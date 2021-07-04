@@ -12,8 +12,17 @@ class Mahasiswa extends Model
     protected $table = "mahasiswa";
     protected $fillable = ['nama','alamat', 'tgl_lahir','tmp_lahir'];
  
+    public function getMhsID()
+   {
+       return sprintf('MHS%03d', $this->id);
+   }
+
     public function mata_kuliah()
     {
     	return $this->belongsToMany(MataKuliah::class);
+    }
+    
+    public function user(){
+    	return $this->hasOne(User::class);
     }
 }

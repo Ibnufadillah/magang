@@ -12,8 +12,17 @@ class Dosen extends Model
     protected $table = "dosen";
     protected $fillable = ['nama','alamat', 'tgl_lahir','tmp_lahir'];
 
+    public function getDosenID()
+   {
+       return sprintf('D%03d', $this->id);
+   }
+
     public function mata_kuliah(){
     	return $this->hasMany(MataKuliah::class);
+    }
+
+    public function user(){
+    	return $this->hasOne(User::class);
     }
 
 }

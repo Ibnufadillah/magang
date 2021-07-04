@@ -28,7 +28,7 @@
                     @foreach($mahasiswa as $m)
                     <tr>
                         <td>
-                                    {{ $m->id}}
+                                    {{ $m->getMhsID()}}
                         </td>
                         <td>
                                     {{ $m->nama}}
