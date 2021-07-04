@@ -10,7 +10,8 @@ class MataKuliah extends Model
     use HasFactory;
 
     protected $table = "mata_kuliah";
- 
+    protected $fillable = ['nama','sks'];
+
     public function mahasiswa()
     {
     	return $this->belongsToMany(Mahasiswa::class);

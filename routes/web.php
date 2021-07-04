@@ -57,7 +57,25 @@ Route::group(['middleware'=>'admin'], function () {
     Route::post('/admin/dosen/update/{id}', [AdminController::class, 'updateDosen']);
 });
 
+Route::group(['middleware'=>'dosen'], function () {
+    Route::get('/dosen/profile/{id}',[DosenController::class, 'detail']);
+    Route::get('/dosen/profile/{id}',[DosenController::class, 'detail'])->name('profilDosen');
+    Route::get('/dosen/matakuliah',[DosenController::class, 'matakuliah'])->name('matakuliah');
 
+    Route::post('/dosen/matakuliah/insert', [DosenController::class, 'insertMatkul'])->name('inMatkul');
+    Route::get('/admin/mhs/delete/{id}', [AdminController::class, 'deleteMahasiswa']);
+    Route::get('/admin/mhs/edit/{id}', [AdminController::class, 'editMahasiswa']);
+    Route::post('/admin/mhs/update/{id}', [AdminController::class, 'updateMahasiswa']);
+
+
+    Route::get('/admin/dosen',[AdminController::class, 'dosenPage'])->name('dosenList');
+    Route::get('/admin/dosen/detail/{id}', [AdminController::class, 'detailDosen'])->name('dosenDetail');
+    Route::get('/admin/dosen/add', [AdminController::class, 'addDosen']);
+    Route::post('/admin/dosen/insert', [AdminController::class, 'insertDosen']);
+    Route::get('/admin/dosen/delete/{id}', [AdminController::class, 'deleteDosen']);
+    Route::get('/admin/dosen/edit/{id}', [AdminController::class, 'editDosen']);
+    Route::post('/admin/dosen/update/{id}', [AdminController::class, 'updateDosen']);
+});
 
 
 
@@ -69,4 +87,3 @@ Route::get('/mahasiswa/{id}/perkuliahan',[MahasiswaController::class, 'perkuliah
 Route::get('/mahasiswa/{id}/perkuliahan/{kode_mk}',[MahasiswaController::class, 'kelas']);
 
 
-Route::get('/dosen/profile/{id}',[DosenController::class, 'detail']);
