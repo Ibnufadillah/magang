@@ -15,14 +15,88 @@ class AdminController extends Controller
         //    return $mahasiswa;
     }
 
+    // MAHASISWA SECTION
     public function mhsPage()
     {
         $data = [
             'mahasiswa' => Mahasiswa::get(),
         ];
 
-        return view('admin.v_mhs', $data);
+        return view('admin.mhs.v_mhs', $data);
     }
+    public function detailMahasiswa($id)
+    {
+
+        if (!Mahasiswa::find($id)) {
+            abort(404);
+        }
+
+        $data = [
+            'mhs' => Mahasiswa::find($id),
+        ];
+        return view('admin.mhs.v_mhs_detail', $data);
+    }
+
+    public function addMahasiswa(){
+        return view('admin.mhs.v_add_mhs');
+    }
+    public function insertMahasiswa(){
+        Request()->validate([
+            // 'id' => 'required|unique:teacher,id|min:10|max:10',
+            'name' => 'required',
+            'address' => 'required',
+            'date' => 'required',
+            'birthplace' => 'required'
+        ]);
+
+        Mahasiswa::create([
+    		'nama' => Request()->name,
+            'alamat' => Request()->address,
+            'tgl_lahir' => Request()->date,
+            'tmp_lahir' => Request()->birthplace
+    	]);
+
+        return redirect()->route('mhsList')->with('pesan', 'Added new data !1!1');
+    }
+
+    public function deleteMahasiswa($id)
+    {
+        $dosen = Mahasiswa::find($id);
+        $dosen->delete();
+        return redirect()->route('mhsList')->with('pesan', 'Deleted a data !1!1');
+
+    }
+    public function editMahasiswa($id){
+
+        if (!Mahasiswa::find($id)) {
+            abort(404);
+        }
+        $data = [
+            'mhs' => Mahasiswa::find($id),
+        ];
+        return view('admin.mhs.v_edit_mhs', $data);
+    }
+
+    public function updateMahasiswa($id){
+        Request()->validate([
+            // 'id' => 'required|unique:teacher,id|min:10|max:10',
+            'name' => 'required',
+            'address' => 'required',
+            'date' => 'required',
+            'birthplace' => 'required'
+        ]);
+
+        $mhs = Mahasiswa::find($id);
+        $mhs->nama = Request()->name;
+        $mhs->alamat = Request()->address;
+        $mhs->tgl_lahir = Request()->date;
+        $mhs->tmp_lahir = Request()->birthplace;
+        $mhs->save();
+        
+        return redirect()->route('mhsDetail', $id)->with('pesan', 'Updated a data !1!1');
+    }
+
+
 
     // DOSEN SECTION
     public function dosenPage()

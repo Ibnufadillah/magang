@@ -36,7 +36,15 @@ Route::get('/anggota',[WebController::class, 'anggotaPage']);
 
 
 Route::get('/perkuliahan',[AdminController::class, 'perkuliahan']);
-Route::get('/admin/mahasiswa',[AdminController::class, 'mhsPage']);
+
+Route::get('/admin/mhs',[AdminController::class, 'mhsPage'])->name('mhsList');
+Route::get('/admin/mhs/detail/{id}', [AdminController::class, 'detailMahasiswa'])->name('mhsDetail');
+Route::get('/admin/mhs/add', [AdminController::class, 'addMahasiswa']);
+Route::post('/admin/mhs/insert', [AdminController::class, 'insertMahasiswa']);
+Route::get('/admin/mhs/delete/{id}', [AdminController::class, 'deleteMahasiswa']);
+Route::get('/admin/mhs/edit/{id}', [AdminController::class, 'editMahasiswa']);
+Route::post('/admin/mhs/update/{id}', [AdminController::class, 'updateMahasiswa']);
+
 
 Route::get('/admin/dosen',[AdminController::class, 'dosenPage'])->name('dosenList');
 Route::get('/admin/dosen/detail/{id}', [AdminController::class, 'detailDosen'])->name('dosenDetail');
