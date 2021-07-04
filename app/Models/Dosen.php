@@ -16,6 +16,10 @@ class Dosen extends Model
    {
        return sprintf('D%03d', $this->id);
    }
+    public function getID()
+   {
+       return $this->id;
+   }
 
     public function mata_kuliah(){
     	return $this->hasMany(MataKuliah::class);

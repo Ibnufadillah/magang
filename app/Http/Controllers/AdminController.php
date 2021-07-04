@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\Mahasiswa;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
     public function __construct()
     {
+        $this -> MahasiswaModel = new Mahasiswa();
         $this->middleware('auth');
     }
 
@@ -60,6 +63,14 @@ class AdminController extends Controller
             'tgl_lahir' => Request()->date,
             'tmp_lahir' => Request()->birthplace
     	]);
+
+        $latest = Mahasiswa::latest('id')->first();
+        $id = $latest->getMhsID();
+        User::create([
+            'email' => $id,
+            'password' => Hash::make('mhs'),
+            'mahasiswa_id' => $latest->getID(),
+        ]);
 
         return redirect()->route('mhsList')->with('pesan', 'Added new data !1!1');
     }
@@ -144,6 +155,15 @@ class AdminController extends Controller
             'tgl_lahir' => Request()->date,
             'tmp_lahir' => Request()->birthplace
     	]);
+
+        $latest = Dosen::latest('id')->first();
+        $id = $latest->getDosenID();
+        User::create([
+            'email' => $id,
+            'password' => Hash::make('dosen'),
+            'dosen_id' => $latest->getID(),
+        ]);
+
 
         return redirect()->route('dosenList')->with('pesan', 'Added new data !1!1');
     }
