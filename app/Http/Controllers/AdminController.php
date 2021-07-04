@@ -105,7 +105,7 @@ class AdminController extends Controller
             'dosen' => Dosen::get(),
         ];
 
-        return view('admin.v_dosen', $data);
+        return view('admin.dosen.v_dosen', $data);
     }
 
     public function detailDosen($id)
@@ -118,11 +118,11 @@ class AdminController extends Controller
         $data = [
             'dosen' => Dosen::find($id),
         ];
-        return view('admin.v_dosen_detail', $data);
+        return view('admin.dosen.v_dosen_detail', $data);
     }
 
     public function addDosen(){
-        return view('admin.v_add_dosen');
+        return view('admin.dosen.v_add_dosen');
     }
     public function insertDosen(){
         Request()->validate([
@@ -158,7 +158,7 @@ class AdminController extends Controller
         $data = [
             'dosen' => Dosen::find($id),
         ];
-        return view('admin.v_edit_dosen', $data);
+        return view('admin.dosen.v_edit_dosen', $data);
     }
 
     public function updateDosen($id){
