@@ -1,92 +1,142 @@
-@if (auth()->user())
-<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-    <div class="sb-sidenav-menu">
-        <div class="nav">
-            <div class="sb-sidenav-menu-heading">Core</div>
-            <a class="nav-link {{ request()->is('/') ? 'active' : ''}}" href="/">
-                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="{{ asset('template')}}/img/AdminLTELogo.png" alt="AdminLTE Logo"
+        class="brand-image img-circle elevation-3" style="opacity: 0.8" />
+      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{{ asset('template')}}/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" />
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
                 Dashboard
+              </p>
             </a>
-                @if (auth()->user()->level == 1)
-                    <div class="sb-sidenav-menu-heading"> Admin</div>
-                    <a class="nav-link {{ request()->is('students', 'students/*') ? 'active' : 'collapsed'}}" href="#" data-toggle="collapse" data-target="#collapseData" aria-expanded="true" aria-controls="collapseData">
-                        <div class="sb-nav-link-icon"><i class="fas fa-user-graduate"></i></div>
-                        Student
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse {{ request()->is('students', 'students/*') ? 'show' : ''}}" id="collapseData" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link {{ request()->is('students') ? 'active' : ''}}" href="/students">Student List</a>
-                            <a class="nav-link {{ request()->is('students/add') ? 'active' : ''}}" href="/students/add">Add Student</a>
-                        </nav>
-                    </div>
-                    <a class="nav-link {{ request()->is('teachers', 'teachers/*') ? 'active' : 'collapsed'}}" href="#" data-toggle="collapse" data-target="#collapseTeacher" aria-expanded="false" aria-controls="collapseTeacher">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                        Teacher
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse {{ request()->is('teachers', 'teachers/*') ? 'show' : ''}}" id="collapseTeacher" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link {{ request()->is('teachers') ? 'active' : ''}}" href="/teachers">Teacher Data</a>
-                            <a class="nav-link {{ request()->is('teachers/add') ? 'active' : ''}}" href="/teachers/add">Add Teacher</a>
-                        </nav>
-                    </div>
-                    <div class="sb-sidenav-menu-heading">Setting</div>
-                    <a class="nav-link {{ request()->is('admins', 'users') ? 'active' : 'collapsed'}}" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
-                        <div class="sb-nav-link-icon"><i class="fas fa-users-cog"></i></div>
-                        Users
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse {{ request()->is('admins', 'users', 'admins/add', 'users/add') ? 'show' : ''}}" id="collapseUsers" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link {{ request()->is('admins') ? 'active' : ''}}" href="/admins">Manage Admin</a>
-                        </nav>
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link {{ request()->is('users') ? 'active' : ''}}" href="/users">Manage User</a>
-                        </nav>
-                    </div>
-                @elseif (auth()->user()->level == 2)
-                    <div class="sb-sidenav-menu-heading">Menu</div>
-                    
-                    <a class="nav-link {{ request()->is('user/*') ? 'active' : 'collapsed'}}" href="#" data-toggle="collapse" data-target="#collapseData" aria-expanded="true" aria-controls="collapseData">
-                        <div class="sb-nav-link-icon"><i class="fas fa-user-graduate"></i></div>
-                        Akademik
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse {{ request()->is('user/*') ? 'show' : ''}}" id="collapseData" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link {{ request()->is('user/profile') ? 'active' : ''}}"  href="/user/profile">Biodata</a>
-                            <a class="nav-link {{ request()->is('user/schedule') ? 'active' : ''}}" href="/user/schedule">Jadwal</a>
-                            <a class="nav-link {{ request()->is() ? 'active' : ''}}" href="#">Nilai</a>
-                        </nav>
-                    </div>
-                @endif
-        </div>
+          </li>
+          <li class="nav-header">Menu</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
+                Admin
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mahasiswa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/compose.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dosen</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Perkuliahan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header">Menu</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
+                Dosen
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/compose.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mata Kuliah</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kelas</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header">Menu</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
+                Mahasiswa
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/compose.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mata Kuliah</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kelas</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
     </div>
-    <div class="sb-sidenav-footer">
-        <div class="small">Logged in as:</div>
-        <div class="row mt-2">
-            <div class="col-auto">
-                <img src="{{ asset('img/avatar.png') }}" alt="Admin" class="rounded-circle ml-1 mt-1" height="40">
-
-            </div>
-            <div class="col-ml-auto">
-                {{ Auth::user()->name }} <br>
-
-                @if (auth()->user()->level == 1)
-                    <i class="fas fa-user-lock"></i>
-                @elseif (auth()->user()->level == 2)
-                    <i class="fas fa-user-graduate"></i>
-                @endif
-                   
-
-
-
-            </div>
-
-        </div>
-
-
-    </div>
-</nav>
-@endif
+    <!-- /.sidebar -->
+  </aside>
