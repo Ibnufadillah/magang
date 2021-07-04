@@ -10,6 +10,7 @@ class MahasiswaController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth');
         $this -> Mahasiswa = new Mahasiswa();
     }
 

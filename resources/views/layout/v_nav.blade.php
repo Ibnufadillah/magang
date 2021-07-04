@@ -43,6 +43,7 @@
               </p>
             </a>
           </li>
+          @if (auth()->user()->level == 1)
           <li class="nav-header">Menu</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -73,6 +74,7 @@
               </li>
             </ul>
           </li>
+          @elseif (auth()->user()->level == 2)
           <li class="nav-header">Menu</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -103,6 +105,7 @@
               </li>
             </ul>
           </li>
+          @elseif (auth()->user()->level == 3)
           <li class="nav-header">Menu</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -133,7 +136,7 @@
               </li>
             </ul>
           </li>
-          
+          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
