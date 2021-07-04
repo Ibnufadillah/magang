@@ -9,10 +9,12 @@ use App\Models\MhsMatkul;
 
 class MahasiswaController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
         $this -> Mahasiswa = new Mahasiswa();
+        
     }
 
     public function index(){
@@ -24,19 +26,20 @@ class MahasiswaController extends Controller
 //        $anggota = Anggota::get();
 //        return view('v_anggota', ['anggota' => $anggota]);
 //    }
-    public function detail($id){
-
+    public function detail(){
+        $id_user = auth()->user()->mahasiswa->id;
         $data = [
-            'mahasiswa' => Mahasiswa::find($id),
+            'mahasiswa' => Mahasiswa::find($id_user),
         ];
         return view('mhs.v_profile', $data);
     }
 
     public function matkul(){
-        $id = 7;
+        $id_user = auth()->user()->mahasiswa->id;
+
         $data = [
             'mata_kuliah' => MataKuliah::get(),
-            'mahasiswa' => Mahasiswa::find($id),
+            'mahasiswa' => Mahasiswa::find($id_user),
         ];
         return view('mhs.v_matkul', $data);
         // return $data;
