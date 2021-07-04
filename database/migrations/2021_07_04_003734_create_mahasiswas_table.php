@@ -17,8 +17,11 @@ class CreateMahasiswasTable extends Migration
 
 		$table->id();
 		$table->string('nama');
-		$table->text('alamat');
+		$table->text('alamat')->nullable();
+        $table->date('tgl_lahir')->nullable();
+		$table->string('tmp_lahir')->nullable();
 		$table->string('img_url');
+        $table->timestamps();
         });
     }
 
