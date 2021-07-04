@@ -55,10 +55,11 @@
           <li class="nav-header">Menu</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
+              <i class="nav-icon fas fa-user-lock"></i>
               <p>
                 Admin
                 <i class="fas fa-angle-left right"></i>
+                
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -86,7 +87,7 @@
           <li class="nav-header">Menu</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
+              <i class="nav-icon fas fa-chalkboard-teacher"></i>
               <p>
                 Dosen
                 <i class="fas fa-angle-left right"></i>
@@ -94,13 +95,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/dosen/profile/7" class="nav-link">
+                <a href="/dosen/profile" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/dosen/mata-kuliah" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mata Kuliah</p>
                 </a>
@@ -117,7 +118,7 @@
           <li class="nav-header">Menu</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
+              <i class="nav-icon fas fa-user-graduate"></i>
               <p>
                 Mahasiswa
                 <i class="fas fa-angle-left right"></i>
