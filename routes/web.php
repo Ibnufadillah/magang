@@ -70,4 +70,7 @@ Route::get('/mahasiswa/perkuliahan',[MahasiswaController::class, 'perkuliahan'])
 // Route::get('/mahasiswa/{id}/perkuliahan/{kode_mk}',[MahasiswaController::class, 'kelas']);
 
 
-Route::get('/dosen/profile/{id}',[DosenController::class, 'detail']);
+Route::get('/dosen/profile',[DosenController::class, 'detail']);
+Route::get('/dosen/mata-kuliah/',[DosenController::class, 'matkul'])->name('DosMatkul');
+Route::post('/dosen/mata-kuliah/tambah', [DosenController::class, 'tambahMatkul']);
+
