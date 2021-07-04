@@ -14,7 +14,15 @@
           <img src="{{ asset('template')}}/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">
+          @if (Auth::user()->mahasiswa)
+          {{ Auth::user()->mahasiswa->nama }}
+          @elseif(Auth::user()->dosen)
+          {{ Auth::user()->dosen->nama }}              
+          @else
+          Admin
+          @endif
+          </a>
         </div>
       </div>
 
@@ -123,7 +131,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/mahasiswa/mata-kuliah/" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mata Kuliah</p>
                 </a>

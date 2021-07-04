@@ -12,38 +12,34 @@
                     <tr>
                         <th>Mata Kuliah</th>
                         <th>Dosen Pengampu</th>
-                        <th>SKS</th>
-                        <th width="1%">Jumlah SKS</th>
+                        <th class="text-center">SKS</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($mahasiswa->mata_kuliah as $h)
                     <tr>
                         <td>
-                            <ul>
-                                @foreach($mahasiswa->mata_kuliah as $h)
-                                <li> 
-                                    <a href="/mahasiswa/{{ $mahasiswa->id }}/perkuliahan/{{ $h->id }}">{{ $h->nama }} </a>
-                                </li>
-                                @endforeach
-                            </ul>
+                            <a href="#">{{ $h->nama }} </a>
                         </td>
                         <td>
-                            <ul>
-                                @foreach($mahasiswa->mata_kuliah as $h)
-                                <li> {{ $h->dosen->nama }} </li>
-                                @endforeach
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                @foreach($mahasiswa->mata_kuliah as $h)
-                                <li> {{ $h->sks }} </li>
-                                @endforeach
-                            </ul>
+                            {{ $h->dosen->nama }}
                         </td>
                         <td class="text-center">
-                            {{ $mahasiswa->mata_kuliah->sum('sks') }}
+                            {{ $h->sks }}
                         </td>
+                    </tr>
+                    @endforeach
+                    <tr>
+                        <td>
+                            <b>Total SKS</b>
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td class="text-center">
+                            {{ $h->sum('sks') }}
+                        </td>
+
                     </tr>
                 </tbody>
             </table>

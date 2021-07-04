@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use App\Models\MataKuliah;
+use App\Models\MhsMatkul;
 
 class MahasiswaController extends Controller
 {
@@ -32,7 +33,7 @@ class MahasiswaController extends Controller
     }
 
     public function matkul(){
-        $id = 17;
+        $id = 7;
         $data = [
             'mata_kuliah' => MataKuliah::get(),
             'mahasiswa' => Mahasiswa::find($id),
@@ -40,6 +41,27 @@ class MahasiswaController extends Controller
         return view('mhs.v_matkul', $data);
         // return $data;
     }
+    public function tambahMatkul(){
+        Request()->validate([
+            // 'id' => 'required|unique:teacher,id|min:10|max:10',
+            
+        ]);
+        $id_new = 
+        sprintf ('%dMK%d',Request()->id ,auth()->user()->mahasiswa->id);
+
+        if (MhsMatkul::find($id_new)) {
+            return redirect()->route('MhsMatkul')->with('alert', 'Mata Kuliah sudah diambil');
+        }
+
+        MhsMatkul::create([
+    		'id' => $id_new,
+    		'mahasiswa_id' => auth()->user()->mahasiswa->id,
+    		'mata_kuliah_id' => Request()->id,
+    	]);
+
+        return redirect()->route('MhsMatkul')->with('pesan', 'Added new matkul !1!1');
+    }
+
     public function perkuliahan($id){
 
         $data = [
