@@ -63,11 +63,11 @@ Route::group(['middleware'=>'admin'], function () {
 Route::group(['middleware'=>'mahasiswa'], function () {
 });
 // Nanti hapus "mahasiswa" and id
-Route::get('/mahasiswa/profile/{id}',[MahasiswaController::class, 'detail']);
+Route::get('/mahasiswa/profile/',[MahasiswaController::class, 'detail']);
 Route::get('/mahasiswa/mata-kuliah/',[MahasiswaController::class, 'matkul'])->name('MhsMatkul');
 Route::post('/mahasiswa/mata-kuliah/tambah', [MahasiswaController::class, 'tambahMatkul']);
-Route::get('/mahasiswa/{id}/perkuliahan',[MahasiswaController::class, 'perkuliahan']);
-Route::get('/mahasiswa/{id}/perkuliahan/{kode_mk}',[MahasiswaController::class, 'kelas']);
+Route::get('/mahasiswa/perkuliahan',[MahasiswaController::class, 'perkuliahan']);
+// Route::get('/mahasiswa/{id}/perkuliahan/{kode_mk}',[MahasiswaController::class, 'kelas']);
 
 
 Route::get('/dosen/profile/{id}',[DosenController::class, 'detail']);

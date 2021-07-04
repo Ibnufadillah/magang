@@ -28,7 +28,20 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach($mata_kuliah as $m)
+                    <?php $flag = 1; ?>
+                    @foreach ($m->mahasiswa as $mm)
+                        @if ($mm->id != auth()->user()->level)
+                        <?php $flag = 0; ?>
+                        @break
+                        @endif
+
+                    @endforeach
+
+                    @if ($flag == 1)
+                        
+                        
                     <form method="POST" enctype="multipart/form-data" action="/mahasiswa/mata-kuliah/tambah">
                         @csrf            
         
@@ -52,7 +65,9 @@
                                         </td>
                     </tr>
                 </form>
-                    @endforeach
+                @endif
+
+                @endforeach
                 </tbody>
             </table>
         </div>
@@ -90,7 +105,7 @@
                             
                         </td>
                         <td class="text-center">
-                            {{ $h->sum('sks') }}
+                            {{ $mahasiswa->mata_kuliah->sum('sks') }}
                         </td>
 
                     </tr>

@@ -125,7 +125,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/mahasiswa/profile/7" class="nav-link">
+                <a href="/mahasiswa/profile/" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Profile</p>
                 </a>
@@ -137,7 +137,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/mahasiswa/7/perkuliahan" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kelas</p>
                 </a>
