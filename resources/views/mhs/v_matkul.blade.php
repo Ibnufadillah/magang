@@ -17,62 +17,35 @@
                 {{ session('alert') }}
             </div>
             @endif
-        
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Kode MK</th>
-                        <th>Mata Kuliah</th>
-                        <th>SKS</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <form method="POST" enctype="multipart/form-data" action="/mahasiswa/mata-kuliah/tambah">
+                @csrf            
 
+            <div class="col"><label class="labels">Subject</label>
+                <select class="form-control @error('id_matkul') is-invalid @enderror" id="subject" name="id_matkul">
+                    <option value="" selected disabled hidden>Choose here</option>
                     @foreach($mata_kuliah as $m)
-                    <?php $flag = 1; ?>
-                    @foreach ($m->mahasiswa as $mm)
-                        @if ($mm->id != auth()->user()->level)
-                        <?php $flag = 0; ?>
-                        @break
-                        @endif
-
+                        <option value="{{ $m->id }}">{{ $m->nama }}</option>
                     @endforeach
-
-                    @if ($flag == 1)
-                        
-                        
-                    <form method="POST" enctype="multipart/form-data" action="/mahasiswa/mata-kuliah/tambah">
-                        @csrf            
-        
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control @error('id') is-invalid @enderror"  value="{{ $m->id }}" name="id"readonly>
-                            <div class="invalid-feedback">
-                                @error('id')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                        </td>
-                        <td>
-                            {{ $m->nama }}
-                        </td>
-                        <td>
-                                    {{ $m->sks}}
-                        </td>
-                        <td>
-                                <button class="btn btn-success profile-button" name="add_record" type="submit" type="submit" value="add_record"><i class="fas fa-plus-circle"></i> Tambah</button>
-                                        </td>
-                    </tr>
-                </form>
-                @endif
-
-                @endforeach
-                </tbody>
-            </table>
+                    </select>
+                    <div class="invalid-feedback">
+                        @error('id_matkul')
+                            {{ $message }}
+                        @enderror
+                    </div>
+                    <input class="input @error('id') is-invalid @enderror" hidden name="id" id="id_mhs_matkul" type="text" value="">
+                    <div class="invalid-feedback">
+                        @error('id')
+                            {{ $message }}
+                        @enderror
+                    </div>
+            </div>
+            <div class="mt-1 text-center">
+                <button class="btn btn-success profile-button" name="add_record" type="submit" type="submit" value="add_record"><i class="fas fa-plus-circle"></i> Tambah</button>
+            </div>
+            </form>
         </div>
     </div>
-    <div class="card mt-5">
+    <div class="card mt-2">
         <div class="card-body">
             <h5 class="text-center my-4">Mata Kuliah yang diambil</h5>
             <table class="table table-bordered table-striped">
@@ -115,4 +88,16 @@
     </div>
 </div>
 
+@endsection
+
+@section('script')
+<script>
+$('#subject').on('change',function(){
+    var id_matkul = $(this).children('option:selected').val();
+    var id_mhs = {{ auth()->user()->mahasiswa_id }};
+    var id = id_matkul+'MK'+id_mhs;
+    $('#id_mhs_matkul').val(id);
+});
+
+</script>
 @endsection
