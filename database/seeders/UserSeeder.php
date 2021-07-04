@@ -14,27 +14,35 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        for($x = 1; $x <= 10; $x++){
+  
+            // insert data dummy pegawai dengan faker
+            DB::table('users')->insert([
+               // 'nip'=>$faker->unique()->randomNumber,
+                'email' => sprintf('MHS%03d', $x),
+                'password' => '$2y$10$seXWgRX6e7NLNMcJQEoZsOfMbQ1GG6ZnlubF9lAmcohDj131asSw6',
+                'level' => '3',
+                'mahasiswa_id' => $x
+            ]);
+ 
+        }
+        for($x = 1; $x <= 10; $x++){
+  
+            // insert data dummy pegawai dengan faker
+            DB::table('users')->insert([
+               // 'nip'=>$faker->unique()->randomNumber,
+                'email' => sprintf('D%03d', $x),
+                'password' => '$2y$10$8dl5QriIs33lVAQ3DxY.6.nmxi5o78XpDZNF188OGf/HLCwMh5RS2',
+                'level' => '2',
+                'dosen_id' => $x
+
+            ]);
+ 
+        }
         DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
+            'email' => 'admin',
             'password' => '$2y$10$Vqn35beeJjnkfyxtPqTjn.Ta56vG96AddvVOaU1ATZX8SaHKn0wvi',
             'level' => '1'
         ]);
-        DB::table('users')->insert(
-            [
-                'name' => 'dosen',
-                'email' => 'dosen@dosen.com',
-                'password' => '$2y$10$0EhIzQ/2rh6Qyg9W6tLhN.RVYqntF6nycAzufyYBp9rMXr7G8Bwgm',
-                'level' => '2'
-            ]
-        );
-        DB::table('users')->insert(
-            [
-                'name' => 'mhs',
-                'email' => 'mhs@mhs.com',
-                'password' => '$2y$10$seXWgRX6e7NLNMcJQEoZsOfMbQ1GG6ZnlubF9lAmcohDj131asSw6',
-                'level' => '3'
-            ]
-        );
     }
 }

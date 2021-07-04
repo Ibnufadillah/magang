@@ -47,7 +47,6 @@ Route::group(['middleware'=>'admin'], function () {
     Route::get('/admin/mhs/edit/{id}', [AdminController::class, 'editMahasiswa']);
     Route::post('/admin/mhs/update/{id}', [AdminController::class, 'updateMahasiswa']);
 
-
     Route::get('/admin/dosen',[AdminController::class, 'dosenPage'])->name('dosenList');
     Route::get('/admin/dosen/detail/{id}', [AdminController::class, 'detailDosen'])->name('dosenDetail');
     Route::get('/admin/dosen/add', [AdminController::class, 'addDosen']);

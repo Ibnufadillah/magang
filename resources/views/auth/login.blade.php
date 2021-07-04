@@ -41,10 +41,10 @@
                               @csrf
                               <div class="form-group">
                                 <label class="small mb-1" for="inputEmailAddress"
-                                  >Email</label
+                                  >Username</label
                                 >
                                 <input
-                                  class="form-control py-4 @error('email') is-invalid @enderror " id="inputEmailAddress" type="email" name="email" placeholder="Enter email address" value="{{ old('email') }}"
+                                  class="form-control py-4 @error('email') is-invalid @enderror " id="inputEmailAddress" type="text" name="email" placeholder="Enter NIM or NIP" value="{{ old('email') }}"
                                 />
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
