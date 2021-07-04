@@ -46,20 +46,15 @@ class MahasiswaController extends Controller
     }
     public function tambahMatkul(){
         Request()->validate([
-            // 'id' => 'required|unique:teacher,id|min:10|max:10',
-            
+            'id' => 'required|unique:mahasiswa_mata_kuliah'
+        ],[
+            'id.unique' => 'Mata kuliah sudah diambil'
         ]);
-        $id_new = 
-        sprintf ('%dMK%d',Request()->id ,auth()->user()->mahasiswa->id);
-
-        if (MhsMatkul::find($id_new)) {
-            return redirect()->route('MhsMatkul')->with('alert', 'Mata Kuliah sudah diambil');
-        }
 
         MhsMatkul::create([
-    		'id' => $id_new,
+    		'id' => Request()->id,
     		'mahasiswa_id' => auth()->user()->mahasiswa->id,
-    		'mata_kuliah_id' => Request()->id,
+    		'mata_kuliah_id' => Request()->id_matkul,
     	]);
 
         return redirect()->route('MhsMatkul')->with('pesan', 'Added new matkul !1!1');
