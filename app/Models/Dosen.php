@@ -10,6 +10,7 @@ class Dosen extends Model
     use HasFactory;
 
     protected $table = "dosen";
+    protected $fillable = ['nama','alamat', 'tgl_lahir','tmp_lahir'];
 
     public function mata_kuliah(){
     	return $this->hasMany(MataKuliah::class);

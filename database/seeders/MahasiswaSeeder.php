@@ -28,7 +28,9 @@ class MahasiswaSeeder extends Seeder
                 // 'nim'=>$faker->unique()->randomNumber,
                  'nama' => $faker->name,
                  'img_url' =>  $faker->imageUrl($width = 200, $height = 200),
-                 'alamat' => $faker->address
+                 'alamat' => $faker->address,
+                 'tgl_lahir' => $faker->date($format = 'Y-m-d', $max = 'now'),
+                 'tmp_lahir' => $faker->city
              ]);
   
          }

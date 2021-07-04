@@ -28,6 +28,9 @@ class DosenSeeder extends Seeder
                 // 'nip'=>$faker->unique()->randomNumber,
                  'nama' => $faker->name,
                  'alamat' => $faker->address,
+                 'tgl_lahir' => $faker->date($format = 'Y-m-d', $max = 'now'),
+                 'tmp_lahir' => $faker->city
+
              ]);
   
          }
