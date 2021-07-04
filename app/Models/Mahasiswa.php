@@ -16,6 +16,10 @@ class Mahasiswa extends Model
    {
        return sprintf('MHS%03d', $this->id);
    }
+    public function getID()
+   {
+       return $this->id;
+   }
 
     public function mata_kuliah()
     {
