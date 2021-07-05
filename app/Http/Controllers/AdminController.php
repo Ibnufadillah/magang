@@ -287,14 +287,16 @@ class AdminController extends Controller
 
         $data = [
             'matkul' => MataKuliah::find($id),
-            'dosen_count' => MataKuliah::find($id)->whereNull('dosen_id')->get()->count(),
         ];
         return view('admin.matkul.v_matkul_detail', $data);
         //return $data;
     }
 
     public function addMatkul(){
-        return view('admin.matkul.v_add_matkul');
+        $data = [
+            'dosen' => Dosen::get(),
+        ];
+        return view('admin.matkul.v_add_matkul', $data);
     }
     public function insertMatkul(){
         Request()->validate([
@@ -306,6 +308,7 @@ class AdminController extends Controller
         MataKuliah::create([
     		'nama' => Request()->nama,
             'sks' => Request()->sks,
+            'dosen_id' => Request()->id_dosen,
     	]);
 
         return redirect()->route('matkulList')->with('pesan', 'Added new data !1!1');
@@ -325,6 +328,7 @@ class AdminController extends Controller
         }
         $data = [
             'matkul' => MataKuliah::find($id),
+            'dosen' => Dosen::get(),
         ];
         return view('admin.matkul.v_edit_matkul', $data);
     }
@@ -339,6 +343,7 @@ class AdminController extends Controller
         $matkul = MataKuliah::find($id);
         $matkul->nama = Request()->nama;
         $matkul->sks = Request()->sks;
+        $matkul->dosen_id = Request()->id_dosen;
         $matkul->save();
         
         return redirect()->route('matkulDetail', $id)->with('pesan', 'Updated a data !1!1');

@@ -4,18 +4,33 @@
 
 
 @section('content')
-<div class="container-fluid">
-
-    <h1 class="my-4">Edit @yield('mode')</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/">Admin</a></li>
-        <li class="breadcrumb-item active">@yield('title')s</li>
-    </ol>
-    @if (session('pesan'))
-        <div class="alert alert-success" role="alert">
-            {{ session('pesan') }}
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 style="font-size: 2.5rem!important;">Edit Mahasiswa Data</h1>
         </div>
-    @endif
+        <div class="col-sm-6">
+          <ol class="breadcrumb mt-3 float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/admin/mhs">Mahasiswa</a></li>
+            <li class="breadcrumb-item"><a href="/admin/mhs/detail/{{ $mhs->id }}">Detail</a></li>
+            <li class="breadcrumb-item active">Edit</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    @if (session('pesan'))
+    <div class="alert alert-success" role="alert">
+        {{ session('pesan') }}
+    </div>
+@endif<!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+          
+    <div class="card p-4">
     <form method="POST" enctype="multipart/form-data" action="/admin/mhs/update/{{ $mhs->id }}">
         @csrf
         <div class="row">
@@ -89,6 +104,8 @@
             </div>
         </div>
     </form>    
-</div>
+  </div>
+</section>
+
 
 @endsection

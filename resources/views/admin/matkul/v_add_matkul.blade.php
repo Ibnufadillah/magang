@@ -27,13 +27,6 @@
                         <h4 class="text-right">Detail Mata Kuliah</h4>
                     </div>
                     <div class="row mt-2">
-                        {{-- <div class="col-md-12"><label class="labels">ID</label><input type="text" class="form-control @error('id') is-invalid @enderror" placeholder="ID Number" value="{{ old('id') }}" name="id"  maxlength="10" >
-                            <div class="invalid-feedback">
-                                @error('id')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                        </div> --}}
                         <div class="col-md-12">
                             <label class="labels">Mata Kuliah</label><input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama" value="{{ old('nama') }}" name="nama">
                             <div class="invalid-feedback">
@@ -52,38 +45,24 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Dosen Pengampu</label><textarea class="form-control @error('dosen') is-invalid @enderror" rows="3" placeholder="Dosen Pengampu" name="dosen">{{ old('dosen') }}</textarea>
+                    <div class="col"><label class="labels">Dosen Pengampu</label>
+                        <select class="form-control @error('id_dosen') is-invalid @enderror" id="subject" name="id_dosen">
+                            <option value="" selected disabled hidden>Choose here</option>
+                            @foreach($dosen as $m)
+                                <option value="{{ $m->id }}">{{ $m->nama }}</option>
+                            @endforeach
+                                 <option value="">-------</option>
+                            </select>
                             <div class="invalid-feedback">
-                                @error('dosen')
+                                @error('id_dosen')
                                     {{ $message }}
                                 @enderror
                             </div>
-                        </div>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="p-3 py-5">
-                    {{-- <div class="d-flex justify-content-between align-items-center experience"><span>Akademik</span></div><br>
-                    <div class="col-md-12"><label class="labels">Subject</label>
-                        <select class="form-control @error('subject') is-invalid @enderror" id="subject" name="subject">
-                            <option value="" selected disabled hidden>Choose here</option>
-                                <option>History of Magic</option>
-                                <option>Charms</option>
-                                <option>Potions</option>
-                                <option>Transfiguration</option>
-                                <option>Divination</option>
-                                <option>Care of Magical Creatures</option>
-                                <option>Defense against the Dark Arts</option>
-                                <option>Herbology</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                @error('subject')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                    </div> <br> --}}
                     <div class="mt-5 text-center">
                         <button class="btn btn-success profile-button" name="add_record" type="submit" type="submit" value="add_record"><i class="fas fa-plus-circle"></i> Tambah</button>
                     </div>
