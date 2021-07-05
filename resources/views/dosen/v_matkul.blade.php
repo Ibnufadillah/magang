@@ -30,17 +30,12 @@
     <div class="card ">
         <div class="card-body">
             <h5 class="text-center my-4">Assign Mata Kuliah</h5>
-            @if (session('pesan'))
-            <div class="alert alert-success" role="alert">
-                {{ session('pesan') }}
-            </div>
-            @endif
             <form method="POST" enctype="multipart/form-data" action="/dosen/mata-kuliah/tambah">
                 @csrf            
 
             <div class="col"><label class="labels">Subject</label>
                 <select class="form-control @error('id_matkul') is-invalid @enderror" id="subject" name="id_matkul">
-                    @if (!@empty($mata_kuliah->id))
+                    @if (@empty($mata_kuliah->id))
                     <option value="" selected disabled hidden>Choose here</option>
                     @foreach($mata_kuliah as $m)
                         <option value="{{ $m->id }}">{{ $m->nama }}</option>

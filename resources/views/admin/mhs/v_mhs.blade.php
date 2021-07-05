@@ -78,6 +78,10 @@
                       </table>
                     </div>
                     <!-- /.card-body -->
+                    <div class="form-group d-flex align-items-center justify-content-between mb-4 ml-4">
+                      <a class="btn btn-primary" href="/admin/mhs/add"><i class="fas fa-user-plus"></i> Tambah Data</a>
+                  </div>
+          
                   </div>
                   <!-- /.card -->
 </section>

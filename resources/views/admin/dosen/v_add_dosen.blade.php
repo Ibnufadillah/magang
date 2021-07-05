@@ -4,19 +4,32 @@
 
 
 @section('content')
-<div class="container-fluid">
-
-    <h1 class="my-4">Add @yield('mode')</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/">Admin</a></li>
-        <li class="breadcrumb-item active">@yield('title')s</li>
-    </ol>
-    <div class="card mb-4">
-        <div class="card-body">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi ut id, numquam sint eum placeat a beatae iusto in quod nam nostrum dolores dolore saepe exercitationem adipisci dicta, quasi aspernatur?</a>
-            
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 style="font-size: 2.5rem!important;">Add Dosen</h1>
         </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb mt-3 float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/admin/dosen">Dosen</a></li>
+            <li class="breadcrumb-item active">Add</li>
+          </ol>
+        </div>
+      </div>
     </div>
+    @if (session('pesan'))
+    <div class="alert alert-success" role="alert">
+        {{ session('pesan') }}
+    </div>
+@endif<!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+            
+    <div class="card p-4">
     <form method="POST" enctype="multipart/form-data" action="/admin/dosen/insert">
         @csrf
         <div class="row">
@@ -27,13 +40,6 @@
                         <h4 class="text-right">Profile</h4>
                     </div>
                     <div class="row mt-2">
-                        {{-- <div class="col-md-12"><label class="labels">ID</label><input type="text" class="form-control @error('id') is-invalid @enderror" placeholder="ID Number" value="{{ old('id') }}" name="id"  maxlength="10" >
-                            <div class="invalid-feedback">
-                                @error('id')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                        </div> --}}
                         <div class="col-md-12">
                             <label class="labels">Nama</label><input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama" value="{{ old('name') }}" name="name">
                             <div class="invalid-feedback">
@@ -81,25 +87,6 @@
                             @enderror
                         </div>
 					</div>
-                    {{-- <div class="d-flex justify-content-between align-items-center experience"><span>Akademik</span></div><br>
-                    <div class="col-md-12"><label class="labels">Subject</label>
-                        <select class="form-control @error('subject') is-invalid @enderror" id="subject" name="subject">
-                            <option value="" selected disabled hidden>Choose here</option>
-                                <option>History of Magic</option>
-                                <option>Charms</option>
-                                <option>Potions</option>
-                                <option>Transfiguration</option>
-                                <option>Divination</option>
-                                <option>Care of Magical Creatures</option>
-                                <option>Defense against the Dark Arts</option>
-                                <option>Herbology</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                @error('subject')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                    </div> <br> --}}
                     <div class="mt-5 text-center">
                         <button class="btn btn-success profile-button" name="add_record" type="submit" type="submit" value="add_record"><i class="fas fa-plus-circle"></i> Tambah</button>
                     </div>
@@ -110,4 +97,8 @@
         </div>
     </form>
 </div>
+<!-- /.card -->
+</section>
+</div>
+
 @endsection
