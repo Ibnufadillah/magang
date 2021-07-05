@@ -3,19 +3,39 @@
 @section('title', 'Dosen')
 
 @section('content')
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 style="font-size: 2.5rem!important;">Dosen</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb mt-3 float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Dosen</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
 
-<div class="container">
-    @if (session('pesan'))
-    <div class="alert alert-success" role="alert">
-        {{ session('pesan') }}
-    </div>
-@endif
-    <div class="card mt-5">
+  <!-- Main content -->
+  <section class="content">
+        @if (session('pesan'))
+        <div class="alert alert-success" role="alert">
+            {{ session('pesan') }}
+        </div>
+    @endif
+    
+    <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Table Dosen</h3>
+        </div>
+        <!-- /.card-header -->
         <div class="card-body">
-            <h5 class="text-center my-4">Daftar Dosen</h5>
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
                         <th>NIP</th>
                         <th>Nama</th>
                         <th>Alamat</th>
@@ -42,9 +62,23 @@
                             </button>
                         </td>
                     </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    @endforeach                    
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>NIP</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Action</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+</section>
+
             
         </div>
         <div class="form-group d-flex align-items-center justify-content-between mb-4 ml-4">

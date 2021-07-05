@@ -48,8 +48,8 @@
           </li>
           @if (auth()->user()->level == 1)
           <li class="nav-header">Menu</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item  {{ request()->is('admin/*') ? 'menu-is-opening menu-open' : ''}}">
+            <a href="#" class="nav-link {{ request()->is('admin/*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-user-lock"></i>
               <p>
                 Admin
@@ -59,25 +59,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/mhs" class="nav-link">
+                <a href="/admin/mhs" class="nav-link {{ request()->is('admin/mhs', 'admin/mhs/*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mahasiswa</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/dosen" class="nav-link">
+                <a href="/admin/dosen" class="nav-link {{ request()->is('admin/dosen', 'admin/dosen/*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dosen</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/matkul" class="nav-link">
+                <a href="/admin/matkul" class="nav-link {{ request()->is('admin/matkul', 'admin/matkul/*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mata Kuliah</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/perkuliahan" class="nav-link">
+                <a href="/admin/perkuliahan" class="nav-link {{ request()->is('admin/perkuliahan', 'admin/perkuliahan/*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Perkuliahan</p>
                 </a>
@@ -86,8 +86,8 @@
           </li>
           @elseif (auth()->user()->level == 2)
           <li class="nav-header">Menu</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item {{ request()->is('dosen/*') ? 'menu-is-opening menu-open' : ''}}">
+            <a href="#" class="nav-link {{ request()->is('dosen/*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-chalkboard-teacher"></i>
               <p>
                 Dosen
@@ -96,29 +96,29 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/dosen/profile" class="nav-link">
+                <a href="/dosen/profile" class="nav-link {{ request()->is('dosen/profile', 'dosen/profile/*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/dosen/mata-kuliah" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="/dosen/mata-kuliah" class="nav-link {{ request()->is('dosen/mata-kuliah', 'dosen/mata-kuliah/*') ? 'active' : ''}}">
+                  <i class="far fa-circle nav-icon "></i>
                   <p>Mata Kuliah</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-circle nav-icon {{ request()->is('dosen/profile', 'dosen/profile/*') ? 'active' : ''}}"></i>
                   <p>Kelas</p>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </li>
           @elseif (auth()->user()->level == 3)
           <li class="nav-header">Menu</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item {{ request()->is('mahasiswa/*') ? 'menu-is-opening menu-open' : ''}}">
+            <a href="#" class="nav-link {{ request()->is('mahasiswa/*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-user-graduate"></i>
               <p>
                 Mahasiswa
@@ -127,23 +127,23 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/mahasiswa/profile/" class="nav-link">
+                <a href="/mahasiswa/profile/" class="nav-link {{ request()->is('mahasiswa/profile', 'mahasiswa/profile/*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/mahasiswa/mata-kuliah/" class="nav-link">
+                <a href="/mahasiswa/mata-kuliah/" class="nav-link {{ request()->is('mahasiswa/mata-kuliah', 'mahasiswa/mata-kuliah/*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mata Kuliah</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kelas</p>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </li>
           @endif

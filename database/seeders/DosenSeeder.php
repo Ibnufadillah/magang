@@ -30,7 +30,7 @@ class DosenSeeder extends Seeder
                  'alamat' => $faker->address,
                  'tgl_lahir' => $faker->date($format = 'Y-m-d', $max = 'now'),
                  'tmp_lahir' => $faker->city,
-                 'img_url' =>  $x.'.png'
+                 'img_url' =>  $x.'.jpg'
              ]);
   
          }

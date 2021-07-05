@@ -3,8 +3,31 @@
 @section('title', ' Dosen | Tambah Matkul')
 
 @section('content')
-<div class="container">
-    <div class="card mt-5">
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 style="font-size: 2.5rem!important;">Mata Kuliah</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb mt-3 float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Mata Kuliah</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    @if (session('pesan'))
+    <div class="alert alert-success" role="alert">
+        {{ session('pesan') }}
+    </div>
+@endif<!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <div class="card ">
         <div class="card-body">
             <h5 class="text-center my-4">Assign Mata Kuliah</h5>
             @if (session('pesan'))
@@ -17,7 +40,7 @@
 
             <div class="col"><label class="labels">Subject</label>
                 <select class="form-control @error('id_matkul') is-invalid @enderror" id="subject" name="id_matkul">
-                    @if ($matkul_count > 0)
+                    @if (!@empty($mata_kuliah->id))
                     <option value="" selected disabled hidden>Choose here</option>
                     @foreach($mata_kuliah as $m)
                         <option value="{{ $m->id }}">{{ $m->nama }}</option>
@@ -73,7 +96,7 @@
             </table>
         </div>
     </div>
-</div>
+  </section>
 
 @endsection
 

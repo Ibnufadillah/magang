@@ -31,7 +31,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware'=>'admin'], function () {
-    Route::get('/perkuliahan',[AdminController::class, 'perkuliahan']);
+    Route::get('admin/perkuliahan',[AdminController::class, 'perkuliahan']);
 
     Route::get('/admin/mhs',[AdminController::class, 'mhsPage'])->name('mhsList');
     Route::get('/admin/mhs/detail/{id}', [AdminController::class, 'detailMahasiswa'])->name('mhsDetail');
@@ -60,7 +60,7 @@ Route::group(['middleware'=>'admin'], function () {
 });
 
 Route::group(['middleware'=>'mahasiswa'], function () {
-    // Nanti hapus "mahasiswa" and id
+
     Route::get('/mahasiswa/profile/',[MahasiswaController::class, 'detail'])->name('MhsProfile');
     Route::get('/mahasiswa/profile/edit',[MahasiswaController::class, 'editDetail']);
     Route::post('/mahasiswa/profile/update', [MahasiswaController::class, 'updateProfile']);

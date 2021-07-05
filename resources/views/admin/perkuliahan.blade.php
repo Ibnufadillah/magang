@@ -3,9 +3,36 @@
 @section('title', 'Perkuliahan')
 
 @section('content')
-<div class="container">
-    <div class="card mt-5">
-        <div class="card-body">
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 style="font-size: 2.5rem!important;">Mata Kuliah</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb mt-3 float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Mata Kuliah</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    @if (session('pesan'))
+    <div class="alert alert-success" role="alert">
+        {{ session('pesan') }}
+    </div>
+@endif<!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+        @if (session('pesan'))
+        <div class="alert alert-success" role="alert">
+            {{ session('pesan') }}
+        </div>
+    @endif
+    
+    <div class="card p-4">
             <h5 class="text-center my-4">Perkuliahan</h5>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -44,5 +71,9 @@
         </div>
     </div>
 </div>
+    <!-- /.card -->
+</section>
+
+ 
 
 @endsection
