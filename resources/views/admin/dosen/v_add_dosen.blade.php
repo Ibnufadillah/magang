@@ -72,6 +72,15 @@
             </div>
             <div class="col-md-4">
                 <div class="p-3 py-5">
+                    <div class="form-group">
+						<b>Foto Profile</b><br/>
+						<input type="file" class="form-control" name="foto_dos">
+                        <div class="text-danger">
+                            @error('foto_dos')
+                                {{ $message }}
+                            @enderror
+                        </div>
+					</div>
                     {{-- <div class="d-flex justify-content-between align-items-center experience"><span>Akademik</span></div><br>
                     <div class="col-md-12"><label class="labels">Subject</label>
                         <select class="form-control @error('subject') is-invalid @enderror" id="subject" name="subject">

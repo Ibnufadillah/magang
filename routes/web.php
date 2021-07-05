@@ -30,12 +30,6 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/pegawai',[PegawaiController::class, 'index']);
-Route::get('/article',[WebController::class, 'index']);
-Route::get('/anggota',[WebController::class, 'anggotaPage']);
-
-
-
 Route::group(['middleware'=>'admin'], function () {
     Route::get('/perkuliahan',[AdminController::class, 'perkuliahan']);
 
@@ -62,26 +56,25 @@ Route::group(['middleware'=>'admin'], function () {
     Route::get('/admin/matkul/delete/{id}', [AdminController::class, 'deleteMatkul']);
     Route::get('/admin/matkul/edit/{id}', [AdminController::class, 'editMatkul']);
     Route::post('/admin/matkul/update/{id}', [AdminController::class, 'updateMatkul']);
-
-    
-    
+   
 });
-
-
-
-
 
 Route::group(['middleware'=>'mahasiswa'], function () {
+    // Nanti hapus "mahasiswa" and id
+    Route::get('/mahasiswa/profile/',[MahasiswaController::class, 'detail'])->name('MhsProfile');
+    Route::get('/mahasiswa/profile/edit',[MahasiswaController::class, 'editDetail']);
+    Route::post('/mahasiswa/profile/update', [MahasiswaController::class, 'updateProfile']);
+    Route::get('/mahasiswa/mata-kuliah/',[MahasiswaController::class, 'matkul'])->name('MhsMatkul');
+    Route::post('/mahasiswa/mata-kuliah/tambah', [MahasiswaController::class, 'tambahMatkul']);
+    Route::get('/mahasiswa/perkuliahan',[MahasiswaController::class, 'perkuliahan']);
+    // Route::get('/mahasiswa/{id}/perkuliahan/{kode_mk}',[MahasiswaController::class, 'kelas']);
 });
-// Nanti hapus "mahasiswa" and id
-Route::get('/mahasiswa/profile/',[MahasiswaController::class, 'detail']);
-Route::get('/mahasiswa/mata-kuliah/',[MahasiswaController::class, 'matkul'])->name('MhsMatkul');
-Route::post('/mahasiswa/mata-kuliah/tambah', [MahasiswaController::class, 'tambahMatkul']);
-Route::get('/mahasiswa/perkuliahan',[MahasiswaController::class, 'perkuliahan']);
-// Route::get('/mahasiswa/{id}/perkuliahan/{kode_mk}',[MahasiswaController::class, 'kelas']);
 
-
-Route::get('/dosen/profile',[DosenController::class, 'detail']);
-Route::get('/dosen/mata-kuliah/',[DosenController::class, 'matkul'])->name('DosMatkul');
-Route::post('/dosen/mata-kuliah/tambah', [DosenController::class, 'tambahMatkul']);
+Route::group(['middleware'=>'dosen'], function () {
+    Route::get('/dosen/profile',[DosenController::class, 'detail'])->name('DosenProfile');
+    Route::get('/dosen/profile/edit',[DosenController::class, 'editDetail']);
+    Route::post('/dosen/profile/update', [DosenController::class, 'updateProfile']);
+    Route::get('/dosen/mata-kuliah/',[DosenController::class, 'matkul'])->name('DosMatkul');
+    Route::post('/dosen/mata-kuliah/tambah', [DosenController::class, 'tambahMatkul']);
+});
 
