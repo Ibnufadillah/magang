@@ -39,6 +39,7 @@
                         <th>Kode MK</th>
                         <th>Mata Kuliah</th>
                         <th>SKS</th>
+                        <th>Dosen</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -55,6 +56,13 @@
                                     {{ $m->sks}}
                         </td>
                         <td>
+                          @if (!@empty($m->dosen))
+                            {{ $m->dosen->nama}}
+                          @else
+                              -
+                          @endif
+                        </td>
+                        <td>
                             <a class="btn btn-info" href='/admin/matkul/detail/{{ $m->id }}'><i class="far fa-edit"></i> Detail</a>
                             <a class="btn btn-secondary" href='/admin/matkul/edit/{{ $m->id }}'><i class="far fa-edit"></i> Edit</a>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $m->id }}">
@@ -66,15 +74,20 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>NIP</th>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>Action</th>
+                      <th>Kode MK</th>
+                      <th>Mata Kuliah</th>
+                      <th>SKS</th>
+                      <th>Dosen</th>
+                      <th>Action</th>
                     </tr>
                     </tfoot>
                   </table>
                 </div>
                 <!-- /.card-body -->
+                <div class="form-group d-flex align-items-center justify-content-between mb-4 ml-4">
+                  <a class="btn btn-primary" href="/admin/matkul/add"><i class="fas fa-user-plus"></i> Tambah Data</a>
+              </div>
+      
               </div>
               <!-- /.card -->
     </section>

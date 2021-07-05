@@ -4,19 +4,32 @@
 
 
 @section('content')
-<div class="container-fluid">
-
-    <h1 class="my-4">Add @yield('mode')</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/">Admin</a></li>
-        <li class="breadcrumb-item active">@yield('title')s</li>
-    </ol>
-    <div class="card mb-4">
-        <div class="card-body">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi ut id, numquam sint eum placeat a beatae iusto in quod nam nostrum dolores dolore saepe exercitationem adipisci dicta, quasi aspernatur?</a>
-            
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 style="font-size: 2.5rem!important;">Add Mata Kuliah</h1>
         </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb mt-3 float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/admin/matkul">Mata Kuliah</a></li>
+            <li class="breadcrumb-item active">Add</li>
+          </ol>
+        </div>
+      </div>
     </div>
+    @if (session('pesan'))
+    <div class="alert alert-success" role="alert">
+        {{ session('pesan') }}
+    </div>
+@endif<!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+            
+    <div class="card p-4">
     <form method="POST" enctype="multipart/form-data" action="/admin/matkul/insert">
         @csrf
         <div class="row">
@@ -72,5 +85,8 @@
             </div>
         </div>
     </form>
+</div>
+<!-- /.card -->
+</section>
 </div>
 @endsection

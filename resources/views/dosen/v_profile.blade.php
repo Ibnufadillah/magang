@@ -26,7 +26,8 @@
 
   <!-- Main content -->
   <section class="content">
-  <div>
+            
+    <div class="card p-4">
       <div class="row gutters-sm">
         <div class="col-md-4 mb-3">
           <div class="card "  style="height: 100%">
@@ -92,6 +93,7 @@
                         
                     </div>
                   </div>
+                  <hr>
                   <div class="row">
                     <div class="col-sm-3">
                       <div class=" text-left">

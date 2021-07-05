@@ -96,6 +96,7 @@
                         
                     </div>
                   </div>
+                  <hr>
                   <div class="row">
                     <div class="col-sm-3">
                       <div class="mt-5 text-left">
