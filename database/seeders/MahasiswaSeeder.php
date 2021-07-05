@@ -27,10 +27,10 @@ class MahasiswaSeeder extends Seeder
              DB::table('mahasiswa')->insert([
                 // 'nim'=>$faker->unique()->randomNumber,
                  'nama' => $faker->name,
-                 'img_url' =>  $faker->imageUrl($width = 200, $height = 200),
+                 'img_url' =>  'mhs_pic.png',
                  'alamat' => $faker->address,
                  'tgl_lahir' => $faker->date($format = 'Y-m-d', $max = 'now'),
-                 'tmp_lahir' => $faker->city
+                 'tmp_lahir' => $x.'.png'
              ]);
   
          }

@@ -1,22 +1,17 @@
 @extends('layout.v_template')
 
-@section('title', 'Edit Dosen')
+@section('title', 'Ubah Profile')
 
 
 @section('content')
 <div class="container-fluid">
 
-    <h1 class="my-4">Edit @yield('mode')</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/">Admin</a></li>
-        <li class="breadcrumb-item active">@yield('title')s</li>
-    </ol>
     @if (session('pesan'))
         <div class="alert alert-success" role="alert">
             {{ session('pesan') }}
         </div>
     @endif
-    <form method="POST" enctype="multipart/form-data" action="/admin/dosen/update/{{ $dosen->id }}">
+    <form method="POST" enctype="multipart/form-data" action="/dosen/profile/update">
         @csrf
         <div class="row">
             <div class="col-md-5 border-right form-group">

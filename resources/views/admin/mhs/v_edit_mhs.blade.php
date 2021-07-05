@@ -70,7 +70,16 @@
             </div>
             <div class="col-md-4">
                 <div class="p-3 py-5">
-                    
+                    <img src="{{ url('foto_mhs/'.$mhs->img_url) }}" alt="" srcset="" width="200px">
+                    <div class="form-group">
+						<b>Edit Foto Profile</b><br/>
+						<input type="file" class="form-control" name="foto_mhs">
+                        <div class="text-danger">
+                            @error('foto_mhs')
+                                {{ $message }}
+                            @enderror
+                        </div>
+					</div>
                     <div class="mt-5 text-center">
                         <button class="btn btn-success profile-button" name="save_record" type="submit" value="save_record"><i class="far fa-edit"></i> Ubah</button>
                     </div>

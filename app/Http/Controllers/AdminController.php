@@ -8,6 +8,10 @@ use App\Models\MataKuliah;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
+use File;
+ 
+  
 use MataKuliah as GlobalMataKuliah;
 
 class AdminController extends Controller
@@ -56,14 +60,22 @@ class AdminController extends Controller
             'name' => 'required',
             'address' => 'required',
             'date' => 'required',
-            'birthplace' => 'required'
+            'birthplace' => 'required',
+            'foto_mhs' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+		$file = Request()->file('foto_mhs');
+        $nama_file = time().Request()->name.".".$file->extension();
+
+		$tujuan_upload = 'foto_mhs';
+		$file->move($tujuan_upload,$nama_file);
 
         Mahasiswa::create([
     		'nama' => Request()->name,
             'alamat' => Request()->address,
             'tgl_lahir' => Request()->date,
-            'tmp_lahir' => Request()->birthplace
+            'tmp_lahir' => Request()->birthplace,
+            'img_url' => $nama_file
     	]);
 
         $latest = Mahasiswa::latest('id')->first();
@@ -79,8 +91,10 @@ class AdminController extends Controller
 
     public function deleteMahasiswa($id)
     {
-        $dosen = Mahasiswa::find($id);
-        $dosen->delete();
+        $mhs = Mahasiswa::find($id);
+        File::delete('foto_mhs/'.$mhs->img_url);
+
+        $mhs->delete();
         return redirect()->route('mhsList')->with('pesan', 'Deleted a data !1!1');
 
     }
@@ -101,15 +115,36 @@ class AdminController extends Controller
             'name' => 'required',
             'address' => 'required',
             'date' => 'required',
-            'birthplace' => 'required'
-        ]);
+            'birthplace' => 'required',
+            'foto_mhs' => 'file|image|mimes:jpeg,png,jpg|max:2048',
 
-        $mhs = Mahasiswa::find($id);
-        $mhs->nama = Request()->name;
-        $mhs->alamat = Request()->address;
-        $mhs->tgl_lahir = Request()->date;
-        $mhs->tmp_lahir = Request()->birthplace;
-        $mhs->save();
+        ]);
+        if(Request()->foto_mhs <> ""){
+            $file = Request()->file('foto_mhs');
+            $nama_file = time().Request()->name.".".$file->extension();
+
+            $tujuan_upload = 'foto_mhs';
+            $file->move($tujuan_upload,$nama_file);
+
+            $mhs = Mahasiswa::find($id);
+            
+            File::delete('foto_mhs/'.$mhs->img_url);
+            $mhs->nama = Request()->name;
+            $mhs->alamat = Request()->address;
+            $mhs->tgl_lahir = Request()->date;
+            $mhs->tmp_lahir = Request()->birthplace;
+            $mhs->img_url = $nama_file;
+            $mhs->save();
+        }else{
+            $mhs = Mahasiswa::find($id);
+            $mhs->nama = Request()->name;
+            $mhs->alamat = Request()->address;
+            $mhs->tgl_lahir = Request()->date;
+            $mhs->tmp_lahir = Request()->birthplace;
+            $mhs->save();
+        }
+		
+
         
         return redirect()->route('mhsDetail', $id)->with('pesan', 'Updated a data !1!1');
     }
@@ -148,14 +183,22 @@ class AdminController extends Controller
             'name' => 'required',
             'address' => 'required',
             'date' => 'required',
-            'birthplace' => 'required'
+            'birthplace' => 'required',
+            'foto_dos' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+		$file = Request()->file('foto_dos');
+        $nama_file = time().Request()->name.".".$file->extension();
+
+		$tujuan_upload = 'foto_dosen';
+		$file->move($tujuan_upload,$nama_file);
 
         Dosen::create([
     		'nama' => Request()->name,
             'alamat' => Request()->address,
             'tgl_lahir' => Request()->date,
-            'tmp_lahir' => Request()->birthplace
+            'tmp_lahir' => Request()->birthplace,
+            'img_url' => $nama_file
     	]);
 
         $latest = Dosen::latest('id')->first();
@@ -173,6 +216,7 @@ class AdminController extends Controller
     public function deleteDosen($id)
     {
         $dosen = Dosen::find($id);
+        File::delete('foto_dosen/'.$dosen->img_url);
         $dosen->delete();
         return redirect()->route('dosenList')->with('pesan', 'Deleted a data !1!1');
 
@@ -194,16 +238,33 @@ class AdminController extends Controller
             'name' => 'required',
             'address' => 'required',
             'date' => 'required',
-            'birthplace' => 'required'
+            'birthplace' => 'required',
+            'foto_dos' => 'file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+        if(Request()->foto_dos <> ""){
+            $file = Request()->file('foto_dos');
+            $nama_file = time().Request()->name.".".$file->extension();
 
-        $dosen = Dosen::find($id);
-        $dosen->nama = Request()->name;
-        $dosen->alamat = Request()->address;
-        $dosen->tgl_lahir = Request()->date;
-        $dosen->tmp_lahir = Request()->birthplace;
-        $dosen->save();
-        
+            $tujuan_upload = 'foto_dosen';
+            $file->move($tujuan_upload,$nama_file);
+
+            $dosen = Dosen::find($id);
+            File::delete('foto_dosen/'.$dosen->img_url);
+
+            $dosen->nama = Request()->name;
+            $dosen->alamat = Request()->address;
+            $dosen->tgl_lahir = Request()->date;
+            $dosen->tmp_lahir = Request()->birthplace;
+            $dosen->img_url = $nama_file;
+            $dosen->save();
+        }else{
+            $dosen = Dosen::find($id);
+            $dosen->nama = Request()->name;
+            $dosen->alamat = Request()->address;
+            $dosen->tgl_lahir = Request()->date;
+            $dosen->tmp_lahir = Request()->birthplace;
+            $dosen->save();
+        }
         return redirect()->route('dosenDetail', $id)->with('pesan', 'Updated a data !1!1');
     }
 
