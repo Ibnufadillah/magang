@@ -54,6 +54,17 @@ Route::group(['middleware'=>'admin'], function () {
     Route::get('/admin/dosen/delete/{id}', [AdminController::class, 'deleteDosen']);
     Route::get('/admin/dosen/edit/{id}', [AdminController::class, 'editDosen']);
     Route::post('/admin/dosen/update/{id}', [AdminController::class, 'updateDosen']);
+
+    Route::get('/admin/matkul',[AdminController::class, 'matkulPage'])->name('matkulList');
+    Route::get('/admin/matkul/detail/{id}', [AdminController::class, 'detailMatkul'])->name('matkulDetail');
+    Route::get('/admin/matkul/add', [AdminController::class, 'addMatkul']);
+    Route::post('/admin/matkul/insert', [AdminController::class, 'insertMatkul']);
+    Route::get('/admin/matkul/delete/{id}', [AdminController::class, 'deleteMatkul']);
+    Route::get('/admin/matkul/edit/{id}', [AdminController::class, 'editMatkul']);
+    Route::post('/admin/matkul/update/{id}', [AdminController::class, 'updateMatkul']);
+
+    
+    
 });
 
 

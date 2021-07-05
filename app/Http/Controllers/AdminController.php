@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\Mahasiswa;
+use App\Models\MataKuliah;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use MataKuliah as GlobalMataKuliah;
 
 class AdminController extends Controller
 {
@@ -203,5 +205,81 @@ class AdminController extends Controller
         $dosen->save();
         
         return redirect()->route('dosenDetail', $id)->with('pesan', 'Updated a data !1!1');
+    }
+
+    // MATKUL SECTION
+    public function matkulPage()
+    {
+        $data = [
+            'matkul' => MataKuliah::get(),
+        ];
+
+        return view('admin.matkul.v_matkul', $data);
+    }
+
+    public function detailMatkul($id)
+    {
+
+        if (!MataKuliah::find($id)) {
+            abort(404);
+        }
+
+        $data = [
+            'matkul' => MataKuliah::find($id),
+            'dosen_count' => MataKuliah::find($id)->whereNull('dosen_id')->get()->count(),
+        ];
+        return view('admin.matkul.v_matkul_detail', $data);
+        //return $data;
+    }
+
+    public function addMatkul(){
+        return view('admin.matkul.v_add_matkul');
+    }
+    public function insertMatkul(){
+        Request()->validate([
+            // 'id' => 'required|unique:teacher,id|min:10|max:10',
+            'nama' => 'required',
+            'sks' => 'required',
+        ]);
+
+        MataKuliah::create([
+    		'nama' => Request()->nama,
+            'sks' => Request()->sks,
+    	]);
+
+        return redirect()->route('matkulList')->with('pesan', 'Added new data !1!1');
+    }
+
+    public function deleteMatkul($id)
+    {
+        $matkul = MataKuliah::find($id);
+        $matkul->delete();
+        return redirect()->route('matkulList')->with('pesan', 'Deleted a data !1!1');
+
+    }
+    public function editMatkul($id){
+
+        if (!MataKuliah::find($id)) {
+            abort(404);
+        }
+        $data = [
+            'matkul' => MataKuliah::find($id),
+        ];
+        return view('admin.matkul.v_edit_matkul', $data);
+    }
+
+    public function updateMatkul($id){
+        Request()->validate([
+            // 'id' => 'required|unique:teacher,id|min:10|max:10',
+            'nama' => 'required',
+            'sks' => 'required',
+        ]);
+
+        $matkul = MataKuliah::find($id);
+        $matkul->nama = Request()->nama;
+        $matkul->sks = Request()->sks;
+        $matkul->save();
+        
+        return redirect()->route('matkulDetail', $id)->with('pesan', 'Updated a data !1!1');
     }
 }
