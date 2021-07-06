@@ -4,13 +4,32 @@
 
 
 @section('content')
-<div class="container-fluid">
-
-    @if (session('pesan'))
-        <div class="alert alert-success" role="alert">
-            {{ session('pesan') }}
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 style="font-size: 2.5rem!important;">Edit Profile</h1>
         </div>
-    @endif
+        <div class="col-sm-6">
+          <ol class="breadcrumb mt-3 float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/mahasiswa/profile/">Profile</a></li>
+            <li class="breadcrumb-item active">Edit</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    @if (session('pesan'))
+    <div class="alert alert-success" role="alert">
+        {{ session('pesan') }}
+    </div>
+@endif<!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+          
+    <div class="card p-4">
     <form method="POST" enctype="multipart/form-data" action="/mahasiswa/profile/update">
         @csrf
         <div class="row">
@@ -76,7 +95,7 @@
                         </div>
 					</div>
                     <div class="mt-5 text-center">
-                        <button class="btn btn-success profile-button" name="save_record" type="submit" value="save_record"><i class="far fa-edit"></i> Ubah</button>
+                        <button class="btn btn-success profile-button" name="save_record" type="submit" value="save_record"><i class="far fa-edit"></i> Simpan</button>
                     </div>
     
                 </div>
@@ -85,5 +104,6 @@
         </div>
     </form>    
 </div>
+</section>
 
 @endsection
