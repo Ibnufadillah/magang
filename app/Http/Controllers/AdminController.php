@@ -83,6 +83,7 @@ class AdminController extends Controller
         User::create([
             'email' => $id,
             'password' => Hash::make('mhs'),
+            'level' => '3',
             'mahasiswa_id' => $latest->getID(),
         ]);
 
@@ -206,6 +207,7 @@ class AdminController extends Controller
         User::create([
             'email' => $id,
             'password' => Hash::make('dosen'),
+            'level' => '3',
             'dosen_id' => $latest->getID(),
         ]);
 

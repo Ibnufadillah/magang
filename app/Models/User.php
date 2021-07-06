@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'mahasiswa_id',
         'dosen_id',
+        'level',
     ];
 
     /**
