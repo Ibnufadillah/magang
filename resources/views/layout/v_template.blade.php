@@ -28,6 +28,11 @@
   <link rel="stylesheet" href="{{ asset('template/')}}/plugins/daterangepicker/daterangepicker.css" />
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('template/')}}/plugins/summernote/summernote-bs4.min.css" />
+
+
+  <link rel="stylesheet" href="{{ asset('template/')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ asset('template/')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ asset('template/')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -101,6 +106,7 @@
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- jQuery -->
   {{-- <script src="{{ asset('template/')}}/plugins/jquery/jquery.min.js"></script> --}}
@@ -116,32 +122,34 @@
   <script src="{{ asset('template/')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- ChartJS -->
   <script src="{{ asset('template/')}}/plugins/chart.js/Chart.min.js"></script>
-  <!-- Sparkline -->
-  <script src="{{ asset('template/')}}/plugins/sparklines/sparkline.js"></script>
-  <!-- JQVMap -->
-  <script src="{{ asset('template/')}}/plugins/jqvmap/jquery.vmap.min.js"></script>
-  <script src="{{ asset('template/')}}/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-  <!-- jQuery Knob Chart -->
-  <script src="{{ asset('template/')}}/plugins/jquery-knob/jquery.knob.min.js"></script>
-  <!-- daterangepicker -->
-  <script src="{{ asset('template/')}}/plugins/moment/moment.min.js"></script>
-  <script src="{{ asset('template/')}}/plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- Tempusdominus Bootstrap 4 -->
-  <script src="{{ asset('template/')}}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-  <!-- Summernote -->
-  <script src="{{ asset('template/')}}/plugins/summernote/summernote-bs4.min.js"></script>
-  <!-- overlayScrollbars -->
-  <script src="{{ asset('template/')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('template')}}/js/adminlte.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="{{ asset('template')}}/js/demo.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="{{ asset('template')}}/js/pages/dashboard.js"></script>
-  <script src="{{ asset('template/js/') }}/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 
-	<script src="{{ asset('template/js/') }}/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-
+  <script src="{{ asset('template/js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('template/js/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('template/js/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ asset('template/js/responsive.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('template/js/dataTables.buttons.min.js') }}"></script>
+  <script src="{{ asset('template/js/buttons.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('template/js/buttons.html5.min.js') }}"></script>
+  <script src="{{ asset('template/js/buttons.print.min.js') }}"></script>
+  <script src="{{ asset('template/js/buttons.colVis.min.js') }}"></script>
+  <script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
 </body>
 
 </html>

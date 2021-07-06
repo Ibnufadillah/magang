@@ -75,8 +75,12 @@
                                     {{ $h->nama }}
                         </td>
                         <td>
+                            @if (!empty($h->dosen))
                             {{ $h->dosen->nama }}
-                        </td>
+                        @else
+                            -
+                        @endif
+                                            </td>
                         <td class="text-center">
                             {{ $h->sks }}
                         </td>

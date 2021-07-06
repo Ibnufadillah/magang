@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 style="font-size: 2.5rem!important;">Mata Kuliah</h1>
+          <h1 style="font-size: 2.5rem!important;">Perkuliahan</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb mt-3 float-sm-right">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active">Mata Kuliah</li>
+            <li class="breadcrumb-item active">Perkuliahan</li>
           </ol>
         </div>
       </div>
@@ -32,9 +32,13 @@
         </div>
     @endif
     
-    <div class="card p-4">
-            <h5 class="text-center my-4">Perkuliahan</h5>
-            <table class="table table-bordered table-striped">
+    <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Table Perkuliahan</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Nama</th>
@@ -67,9 +71,19 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>
-        </div>
-    </div>
+                <tfoot>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Mtkul</th>
+                        <th>SKS</th>
+                        <th width="1%">Jumlah SKS</th>
+                    </tr>
+                    </tfoot>
+                  </table>
+                </div>
+                <!-- /.card-body -->      
+              </div>
+              <!-- /.card -->
 </div>
     <!-- /.card -->
 </section>
