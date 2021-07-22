@@ -33,9 +33,26 @@ class HomeController extends Controller
         return view('v_dTable');
     }
 
-    public function datajson()
+    public function datajson(Request $request)
 	{
         // return view('v_home');
-		return Datatables::of(Mahasiswa::get())->make(true);
+        $model = Mahasiswa::with('mata_kuliah');
+        // $model->newQuery()->select('mahasiswa.*')->with('mata_kuliah');
+        // if ($request->ajax()) {
+            // $model = Mahasiswa::with('mata_kuliah');
+                return DataTables::eloquent($model)
+
+                // ->addColumns('mata_kuliah', function(Mahasiswa $mhs) {
+                //     return $mhs->mata_kuliah->implode('nama', ', ');
+                //   })
+                ->addColumn('mata_kuliah', function (Mahasiswa $mhs) {
+                    return $mhs->mata_kuliah->map(function($mata_kuliah) {
+                        return \Illuminate\Support\Str::limit($mata_kuliah->nama, 30, '...');
+                    })->toArray();
+                })
+                ->toJson();
+        // }
+        // return view('v_dTable');
+		// return datatables (Mahasiswa::get())->toJson();
 	}
 }

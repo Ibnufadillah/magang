@@ -33,6 +33,16 @@
   <link rel="stylesheet" href="{{ asset('template/')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="{{ asset('template/')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{ asset('template/')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+      <!-- Scripts -->
+    
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	
+  
+  {{-- <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">	 --}}
+
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -125,6 +135,8 @@
   <!-- AdminLTE App -->
   <script src="{{ asset('template')}}/js/adminlte.js"></script>
 
+  {{-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> --}}
+  
   <script src="{{ asset('template/js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('template/js/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('template/js/dataTables.responsive.min.js') }}"></script>
