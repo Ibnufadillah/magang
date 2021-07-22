@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Datatables;
+use App\Models\Mahasiswa;
+
 class HomeController extends Controller
 {
     /**
@@ -25,4 +28,14 @@ class HomeController extends Controller
     {
         return view('v_home');
     }
+    public function datatable()
+    {
+        return view('v_dTable');
+    }
+
+    public function datajson()
+	{
+        // return view('v_home');
+		return Datatables::of(Mahasiswa::get())->make(true);
+	}
 }

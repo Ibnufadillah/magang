@@ -78,3 +78,7 @@ Route::group(['middleware'=>'dosen'], function () {
     Route::post('/dosen/mata-kuliah/tambah', [DosenController::class, 'tambahMatkul']);
 });
 
+
+
+Route::get('/kontak',[HomeController::class, 'datatable'])->name('kontak');
+Route::get('/kontak/json',  [HomeController::class, 'datajson'])->name('json');
