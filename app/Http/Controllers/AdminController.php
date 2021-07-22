@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use Datatables;
+
 use File;
  
   
@@ -30,12 +32,32 @@ class AdminController extends Controller
     }
 
     // MAHASISWA SECTION
-    public function mhsPage()
+    public function mhsPage(Request $request)
     {
+        $model = Mahasiswa::with('mata_kuliah');
+        if ($request->ajax()) {
+                return DataTables::eloquent($model)
+                ->addColumn('mata_kuliah', function (Mahasiswa $mhs) {
+                    return $mhs->mata_kuliah->map(function($mata_kuliah) {
+                        return \Illuminate\Support\Str::limit($mata_kuliah->nama, 30, '...');
+                    })->toArray();
+                })
+                ->addColumn('action', function(Mahasiswa $mhs){
+                    $btn = '
+                    <a class="btn btn-info" href="#"><i class="far fa-edit"></i> Detail</a>
+                    <a class="btn btn-secondary" href="#"><i class="far fa-edit"></i> Edit</a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#">
+                    <i class="fas fa-trash-alt"></i> Hapus
+                    </button>
+                    ';
+                    return $btn;
+                 })
+                ->rawColumns(['action'])
+                ->toJson();
+        }
         $data = [
             'mahasiswa' => Mahasiswa::get(),
         ];
-
         return view('admin.mhs.v_mhs', $data);
     }
     public function detailMahasiswa($id)

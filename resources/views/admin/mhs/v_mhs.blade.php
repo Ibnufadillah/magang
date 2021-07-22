@@ -28,24 +28,19 @@
         </div>
     @endif
     
-    <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Table Mahasiswa</h3>
-        </div>
-        <!-- /.card-header -->
+
         <div class="card-body">
-          <table id="example1" class="table table-bordered table-striped">
+          <table id="tbl_list" class="table table-bordered table-striped">
             <thead>
                     <tr>
                         <th>NIM</th>
                         <th>Nama</th>
                         <th>Alamat</th>
                         <th>Action</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($mahasiswa as $m)
+                    {{-- @foreach($mahasiswa as $m)
                     <tr>
                         <td>
                                     {{ $m->getMhsID()}}
@@ -64,7 +59,7 @@
                             </button>
                         </td>
                     </tr>
-                    @endforeach
+                    @endforeach --}}
                     
                   </tbody>
                     <tfoot>
@@ -85,12 +80,8 @@
                   </div>
                   <!-- /.card -->
 </section>
-</div>
-<div class="form-group d-flex align-items-center justify-content-between mb-4 ml-4">
-    <a class="btn btn-primary" href="/admin/mhs/add"><i class="fas fa-user-plus"></i> Tambah Data</a>
-                                    </div>
 
-@foreach ($mahasiswa as $data)
+{{-- @foreach ($mahasiswa as $data)
 <div class="modal fade" id="delete{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog " role="document">
       <div class="modal-content">
@@ -111,6 +102,26 @@
     </div>
 </div>
     
-@endforeach
+@endforeach --}}
+<script type="text/javascript">
+  $(document).ready(function () {
+     $('#tbl_list').DataTable({
+         "aLengthMenu": [
+                  [5,10, 25, 50, 100, 200, -1],
+                  [5,10, 25, 50, 100, 200, "All"]
+              ],
+          paging: true,
+          processing: true,
+          serverSide: true,
+          ajax: '{{ url('admin/mhs') }}',
+          columns: [
+              { data: 'id', name: 'id'},
+              { data: 'nama', name: 'nama' },
+              { data: 'alamat', name: 'alamat' },
+              {data: 'action', name: 'action', orderable: false, searchable: false},
+          ]
+      });
+   });
+  </script>
 
 @endsection

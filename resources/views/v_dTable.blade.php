@@ -64,7 +64,7 @@
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'nama', name: 'nama' },
-                { data: 'alamat', name: 'alamat' },
+                { data: 'mata_kuliah', name: 'mata_kuliah' },
                 { data: 'tgl_lahir', name: 'tgl_lahir' },
                 { data: 'tmp_lahir', name: 'tmp_lahir' }
             ]
